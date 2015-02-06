@@ -1,79 +1,79 @@
 'use strict';
 
 function insertionSortAsc(items) {
-	var i, j, key;
+    var i, j, key;
 
-	for (j = 1; j < items.length; j++) {
-		key = items[j];
-		i = j - 1;
+    for (j = 1; j < items.length; j++) {
+        key = items[j];
+        i = j - 1;
 
-		while (i > -1 && items[i] > key) { // compare to the cached value (key), not items[j]
-			items[i + 1] = items[i];
-			i--;
-		}
+        while (i > -1 && items[i] > key) { // compare to the cached value (key), not items[j]
+            items[i + 1] = items[i];
+            i--;
+        }
 
-		items[i + 1] = key; // make sure to get 0 index b/c i = -1
-	}
+        items[i + 1] = key; // make sure to get 0 index b/c i = -1
+    }
 
-	return items;
+    return items;
 }
 
 function insertionSortDesc(items) {
-	var i, j, key;
+    var i, j, key;
 
-	for (j = 1; j < items.length; j++) {
-		key = items[j];
-		i = j - 1;
+    for (j = 1; j < items.length; j++) {
+        key = items[j];
+        i = j - 1;
 
-		while (i > -1 && items[i] < key) {
-			items[i + 1] = items[i];
-			i--;
-		}
+        while (i > -1 && items[i] < key) {
+            items[i + 1] = items[i];
+            i--;
+        }
 
-		items[i + 1] = key;
-	}
+        items[i + 1] = key;
+    }
 
-	return items;
+    return items;
 }
 
 function selectionSortAsc(items) {
-	var i, j, key, temp;
+    var i, j, key, temp;
 
-	for (j = 0; j < items.length; j++) {
-		key = j;
+    for (j = 0; j < items.length; j++) {
+        key = j;
 
-		for (i = j; i < items.length; i++) {
-			if (items[i] < items[key]) {
-				key = i;
-			}
-		}
+        for (i = j; i < items.length; i++) {
+            if (items[i] < items[key]) {
+                key = i;
+            }
+        }
 
-		temp = items[j];
-		items[j] = items[key];
-		items[key] = temp;
-	}
+        temp = items[j];
+        items[j] = items[key];
+        items[key] = temp;
+    }
 
-	return items;
+    return items;
 }
 
 function selectionSortDesc(items) {
-	var i, j, key, temp;
+    var i, j, key, temp;
 
-	for (j = 0; j < items.length; j++) {
-		key = j;
+    for (j = 0; j < items.length; j++) {
+        key = j;
 
-		for (i = j; i < items.length; i++) {
-			if (items[i] > items[key]) {
-				key = i;
-			}
-		}
+        for (i = j; i < items.length; i++) {
+            if (items[i] > items[key]) {
+                key = i;
+            }
+        }
 
-		temp = items[j];
-		items[j] = items[key];
-		items[key] = temp;
-	}
+        temp = items[j];
+        items[j] = items[key];
+        items[key] = temp;
+    }
 
-	return items;
+    return items;
 }
 
 function mergeSortAsc(arr, p, r) {
@@ -89,31 +89,31 @@ function mergeSortAsc(arr, p, r) {
         merge(arr, p, q, r);        // 0, 3, 5
     }
 
-	function merge(arr, p, q, r) {
-	    // copy left half to new array
-	    // copy right half to new array
-	    // add sentinel values
-	    // take smallest values from stacks and place in original stack
+    function merge(arr, p, q, r) {
+        // copy left half to new array
+        // copy right half to new array
+        // add sentinel values
+        // take smallest values from stacks and place in original stack
         console.log('arr = ' + arr + '; p = ' + p + '; r = ' + r);
-	    var larr = arr.slice(p, q),     // O(n)
-	        rarr = arr.slice(q, r + 1), // O(n)
-	        uBound = r + 1,
-	        i = 0,
-	        j = 0;
+        var larr = arr.slice(p, q),     // O(n)
+            rarr = arr.slice(q, r + 1), // O(n)
+            uBound = r + 1,
+            i = 0,
+            j = 0;
 
-	    larr.push(Infinity);
-	    rarr.push(Infinity);
+        larr.push(Infinity);
+        rarr.push(Infinity);
 
-	    for (var k = p; k < uBound; k++) {
-	        if (larr[i] < rarr[j]) {
-	            arr[k] = larr[i];
-	            i++;
-	        } else {
-	            arr[k] = rarr[j];
-	            j++;
-	        }
-	    }
-	}
+        for (var k = p; k < uBound; k++) {
+            if (larr[i] < rarr[j]) {
+                arr[k] = larr[i];
+                i++;
+            } else {
+                arr[k] = rarr[j];
+                j++;
+            }
+        }
+    }
 }
 
 // var arr = [6, 5, 4, 3, 2, 1];
