@@ -77,7 +77,7 @@ function mergeSortAsc(arr, p, r) {
             i = 0,
             j = 0;
 
-        larr.push(Infinity);
+        larr.push(Infinity); // change to -Infinity to sort DESC
         rarr.push(Infinity);
 
         for (var k = p; k < uBound; k++) {
